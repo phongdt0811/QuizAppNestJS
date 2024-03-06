@@ -7,7 +7,7 @@ const QuizComponent: FC<QuizComponentProps> = () => (
 //     QuizComponent Component
 //  </QuizComponentWrapper>
       <div className="bg-green-500 text-white p-4">
-         This is the QuizComponent with Tailwind CSS!
+         This is main the QuizComponent
       </div>
 );
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import QuizIntroductionPage from '../pages/QuizIntroductionPage';
+import SignInPage from 'src/pages/SignInPage';
+import QuizPage from 'src/pages/QuizPage';
 
 import { PATH } from 'src/constants/paths';
 import {  } from 'react-router-dom';
 
-// import SignInSignUpPage from '../pages/SignInSignUpPage';
-// import QuizMainPage from '../pages/QuizMainPage';
 
 const MainRoutes = () => {
   return (
@@ -17,9 +17,9 @@ const MainRoutes = () => {
         </Route>
         <Route path={PATH.INTRO} component={QuizIntroductionPage} />
 
-        {/* <Route path={PATH.SIGNIN} component={SignInSignUpPage} /> */}
+        <Route path={PATH.SIGNIN} component={SignInPage} />
 
-        {/* <Route path="/quiz" component={QuizMainPage} /> */}
+        <Route path="/quiz" component={QuizPage} />
         <Route>
             <Redirect to={PATH.INTRO}></Redirect>
         </Route>
