@@ -16,6 +16,15 @@ mkdir src/quiz
 nest generate controller quiz
 nest generate service quiz
 ```
+# Init front-end using ReactJS, taiwinCss, Typescript
+
+```
+npx create-react-app client --template typescript
+npm install 
+cd client
+npx tailwindcss init -p 
+npm start
+```
 
 
 
