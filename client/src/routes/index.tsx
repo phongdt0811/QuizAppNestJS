@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import QuizIntroductionPage from '../pages/QuizIntroductionPage';
 import SignInPage from 'src/pages/SignInPage';
+import SignUpPage from 'src/pages/SignUpPage';
 import QuizPage from 'src/pages/QuizPage';
 
 import { PATH } from 'src/constants/paths';
@@ -18,6 +19,8 @@ const MainRoutes = () => {
         <Route path={PATH.INTRO} component={QuizIntroductionPage} />
 
         <Route path={PATH.SIGNIN} component={SignInPage} />
+
+        <Route path={PATH.SIGNUP} component={SignUpPage} />
 
         <Route path="/quiz" component={QuizPage} />
         <Route>
