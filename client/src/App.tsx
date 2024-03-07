@@ -1,9 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import './index.css';
-import QuizComponent from './components/QuizComponent/QuizComponent';
-import QuizIntroductionPage from './pages/QuizIntroductionPage';
 import MainRoutes from './routes'
 
 const App: React.FC = () => {
