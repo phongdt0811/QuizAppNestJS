@@ -28,5 +28,21 @@ npx tailwindcss init -p
 npm start
 ```
 
+Database 
 
+```
+npm install --save typeorm mysql2
+```
+Create SSL
+```
+openssl genpkey -algorithm RSA -out server.key
+openssl req -new -key server.key -out server.csr
+openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+```
+Start PG
+```
+docker build -t my_postgres .
+docker run -d -p 5432:5432 --name my_postgres_container my_postgres
+docker ps -a # check my_postgres show up
+```
 
