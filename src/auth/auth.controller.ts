@@ -16,7 +16,6 @@ export class AuthController {
   @Post('/signin')
   async login(@Body() user: { phone: string; password: string }): Promise<any> {
     // check password
-    console.log('called api alo')
     return await this.authService.login(user);
   }
 
