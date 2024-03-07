@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { QuizService } from './quiz.service';
-import { Quiz } from './quiz.model';
+import { IQuiz } from './quiz.model';
 
 @Controller('quiz')
 export class QuizController {
