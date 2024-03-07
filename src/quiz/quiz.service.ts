@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { Quiz } from './quiz.model';
+import { IQuestion, IQuiz } from './quiz.model';
 
 @Injectable()
 export class QuizService {
 
     // mock data
-    public quizzes: Quiz[] = [
+    public quizzes: IQuiz[] = [
         {
             id: 1,
             title: 'Test Quiz',
@@ -15,12 +15,13 @@ export class QuizService {
                 id: 1,
                 questionText: 'What is odd number?',
                 options: ['1', '2', '4', '6'],
-                correctOption: 0
+                type: 1,
+                correctOption: [0]
               },
             ],
           },
     ]
-    getAllQuizzes(): Quiz[] {
+    getAllQuizzes(): IQuiz[] {
         return this.quizzes;
       }
 }

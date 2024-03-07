@@ -1,14 +1,16 @@
-export interface Quiz {
+export interface IQuiz {
     id: number;
     title: string;
     description: string;
-    questions: Question[];
+    questions: IQuestion[];
   }
   
-  export interface Question {
+  export interface IQuestion {
     id: number;
     questionText: string;
     options: string[];
-    correctOption: number;
+    type: number | 1;
+    correctOption: number[];
+    hint?: string
   }
   
