@@ -22,8 +22,7 @@ const connectionOptions: ConnectionOptions = {
     ? { rejectUnauthorized: false }
     : false,
   entities: [
-    join(__dirname, '../models/*{.ts,.js}'),
-    'src/entities/*.entity.ts'
+    join(__dirname, '../entities/*{.ts,.js}')
   ],
   // We are using migrations, synchronize should be set to false.
   synchronize: false,

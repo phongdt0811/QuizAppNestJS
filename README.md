@@ -46,3 +46,9 @@ docker run -d -p 5432:5432 --name my_postgres_container my_postgres
 docker ps -a # check my_postgres show up
 ```
 
+Migration Run
+```
+npm run migration:run
+```
+
+
