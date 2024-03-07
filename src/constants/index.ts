@@ -4,3 +4,7 @@ export const REPOSITORIES = {
     USER: 'USER_REPOSITORY',
     QUESTION: 'QUESTION_REPOSITORY'
   }
+export const PUBLIC_TABLES = {
+  USER: 'public.user', 
+  QUESTION : 'public.question'
+}
