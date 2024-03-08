@@ -16,14 +16,14 @@ export class AuthController {
   {}
 
   // @UseGuards(LocalAuthGuard)
-  @Post('/signin')
+  @Post('/sign-in')
   async login(@Body() user: { phone: string; password: string }): Promise<any> {
     // check password
-    console.log('API login called');
+    console.log('API login called', user);
     return await this.authService.login(user);
   }
 
-  @Post('/signup')
+  @Post('/sign-up')
   async register(@Body() createUserDto: CreateUserDto) {
       return await this.authService.register(createUserDto);
   }

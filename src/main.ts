@@ -13,7 +13,11 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule
     // , { httpsOptions }
     );
-  app.enableCors();
+  app.enableCors({
+    origin: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true,
+  });
   await app.listen(3005);
 }
 bootstrap();
