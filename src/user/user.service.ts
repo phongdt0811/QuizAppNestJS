@@ -36,4 +36,11 @@ export class UserService {
     await this.repository.save(newUser);
     return newUser;
   }
+
+  async updateLastLogin(user: User): Promise<User> {
+    user.lastLoginAt = new Date();
+    await this.repository.save(user);
+    return user;
+  }
+
 }

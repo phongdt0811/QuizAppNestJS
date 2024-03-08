@@ -15,11 +15,12 @@ export class AuthService {
   ) {}
 
   async login(user: any): Promise<any> {
-    const check = await this.validateUser(user.phone, user.password);
-    if(!check) throw new UnauthorizedException();
-    const payload =  { sub: 1 , phone: user.phone }
+    const User = await this.validateUser(user.phone, user.password);
+    if(!User) throw new UnauthorizedException();
+    const payload =  { sub: 1 , phone: User.phone }
+    await this.userService.updateLastLogin(User);
     return {
-        phone: user.phone, 
+        ..._.omit(User, 'password', 'createdAt', 'updatedAt'),
         accessToken: this.jwtService.sign(payload)
     } 
   }
