@@ -1,5 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-import TypeOrModule from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BeforeInsert, BeforeUpdate } from 'typeorm';
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
@@ -14,4 +13,23 @@ export class User {
   @Column()
   fullName: string;
 
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+  
+  // Add the new column for last login time
+  @Column({ nullable: true })
+  lastLoginAt: Date; 
+
+  @BeforeInsert()
+  updateDatesOnInsert() {
+    this.createdAt = new Date();
+    this.updatedAt = new Date();
+  }
+  @BeforeUpdate()
+  updateDatesOnUpdate() {
+    this.updatedAt = new Date();
+  }
 }

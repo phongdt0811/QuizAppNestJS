@@ -8,7 +8,10 @@ export class CreateUserTable1709806522098 implements MigrationInterface {
                 "id" SERIAL PRIMARY KEY,
                 "phone" character varying(255) NOT NULL,
                 "password" character varying(255) NOT NULL,
-                "fullName" character varying(255) NOT NULL
+                "fullName" character varying(255) NOT NULL,
+                "createdAt" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
+                "updatedAt" timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
+                "lastLoginAt" timestamp with time zone
             );
         `);
     }
