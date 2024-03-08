@@ -6,15 +6,16 @@ import { AuthService } from '../auth.service';
 import { SECRET } from 'src/constants';
 
 @Injectable()
-export class JwtStrategy extends PassportStrategy(Strategy) {
+export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
   constructor(private readonly authService: AuthService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: SECRET,
+      ignoreExpiration: false, 
+      secretOrKey: `${process.env.SECRET}`,
     });
   }
 
   async validate(payload: any) {
-    return { userId: payload.sub, username: payload.username };
+    return { user: payload.sub, phone: payload.phone };
   }
 }
