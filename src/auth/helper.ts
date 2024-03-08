@@ -36,7 +36,6 @@ export const decryptPassword = (encryptedText: string): string => {
 
 export const _comparePassword = (params: {passwordRaw: string, encryptedPassword:string}) : boolean => {
   
-  console.log('???')
     const a = encryptPassword("123456");
     console.log(a);
     const b = decryptPassword("49dd81615e13ab667dd01acb90d040c2");

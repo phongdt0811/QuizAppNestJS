@@ -1,8 +1,11 @@
 import * as _ from 'lodash';
-import { Injectable, UnauthorizedException, Inject } from '@nestjs/common';
+import { Injectable, UnauthorizedException, Inject, BadRequestException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from 'src/user/user.service';
 import { comparePassword, encryptPassword } from './helper';
+import { CreateUserDto } from 'src/user/dto/CreateUserDto';
+import { User } from '../entities/user.entity';
+import { create } from 'domain';
 
 @Injectable()
 export class AuthService {
@@ -35,6 +38,19 @@ export class AuthService {
             } 
     } catch (error) {
       throw new UnauthorizedException('Invalid User');
+    }
+  }
+
+  async register(createUserDto: CreateUserDto): Promise<any> {
+    try {
+      const user = await this.userService.findByPhone(createUserDto.phone);
+      if(user) {
+        throw new BadRequestException('Exist user');
+      }
+      const newUser: User = await this.userService.create(createUserDto);
+      return newUser;
+    } catch(error) {
+      throw new BadRequestException(error.message)
     }
   }
 }
