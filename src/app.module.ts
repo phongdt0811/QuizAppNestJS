@@ -15,7 +15,9 @@ import { AuthService } from './auth/auth.service';
 // import { UserService } from './user/user.service';
 
 @Module({
-  imports: [ConfigModule.forRoot(), QuestionModule, AuthModule],
+  imports: [ConfigModule.forRoot({
+    envFilePath: '.env'
+  }), QuestionModule, AuthModule],
   controllers: [AppController, QuestionController, AuthController],
   providers: [AppService],
 })
