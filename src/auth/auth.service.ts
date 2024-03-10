@@ -5,7 +5,7 @@ import { UserService } from 'src/user/user.service';
 import { comparePassword, encryptPassword } from './helper';
 import { CreateUserDto } from 'src/user/dto/CreateUserDto';
 import { User } from '../entities/user.entity';
-import { create } from 'domain';
+import { encryptAESCTR } from '../encryption';
 
 @Injectable()
 export class AuthService {
@@ -15,6 +15,7 @@ export class AuthService {
   ) {}
 
   async login(user: any): Promise<any> {
+    user.password = await encryptAESCTR(user.password);
     const User = await this.validateUser(user.phone, user.password);
     if(!User) throw new UnauthorizedException();
     const payload =  { sub: 1 , phone: User.phone }

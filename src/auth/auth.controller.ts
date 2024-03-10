@@ -5,7 +5,7 @@ import { LocalAuthGuard } from './guards/local-auth.guards';
 import { AuthGuard } from '@nestjs/passport'
 import { UserService } from 'src/user/user.service';
 import { CreateUserDto } from 'src/user/dto/CreateUserDto';
-import { create } from 'domain';
+import { encryptAESCTR } from '../encryption'
 
 @Controller('auth')
 export class AuthController {
@@ -25,6 +25,7 @@ export class AuthController {
 
   @Post('/sign-up')
   async register(@Body() createUserDto: CreateUserDto) {
+      createUserDto.password = await encryptAESCTR(createUserDto.password);
       return await this.authService.register(createUserDto);
   }
 
